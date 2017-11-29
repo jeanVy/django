@@ -1,0 +1,39 @@
+{% extends 'home/base_visitor.html' %}
+{% block title %}Log In{% endblock %}
+{% block login_active %}active{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="pen-title">
+        <h1 class="login-logo">Magnit</h1>
+        {% if error_message %}
+        <i><strong>{{ error_message }}</strong></i>
+        {% endif %}
+    </div>
+    <!-- Form Module-->
+    <div class="module form-module">
+        <div class=""><i class="fa fa-times fa-pencil"></i>
+{#            <div class="tooltip">Click Me</div>#}
+        </div>
+        <div class="form">
+            <h2>Login to your account</h2>
+            <form class="form-horizontal" role="form" action="{% url 'home:login_user'%}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" id="id_username" maxlength="30" name="username"/>
+                <input type="password" placeholder="Password" id="id_password" maxlength="30" name="password"/>
+                <button>Login</button>
+            </form>
+        </div>
+{#        <div class="form">#}
+{#            <h2>Create an account</h2>#}
+{#            <form>#}
+{#                <input type="text" placeholder="Username"/>#}
+{#                <input type="password" placeholder="Password"/>#}
+{#                <input type="email" placeholder="Email Address"/>#}
+{#                <button>Register</button>#}
+{#            </form>#}
+{#        </div>#}
+        <div class="cta"><a href="#">Forgot your password?</a></div>
+    </div>
+    {% endblock %}
+
